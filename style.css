@@ -1,81 +1,68 @@
 :root{
-    --fundo: #1D4221;
-    --botao: #64A712;
-    --texto: #ffffff;
-    --max-width: 900px;
+  --fundo: #1D4221;
+  --botao: #64A712;
+  --texto: #ffffff;
+  --max-width: 900px;
 }
 
 *{box-sizing: border-box;}
 
-html,body{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "Bai Jamjuree", sans-serif;
-    background: var(--fundo);
-    color: var(--texto);
-}
+html,body{height:100%; margin:0; padding:0; font-family:"Bai Jamjuree",sans-serif; background:var(--fundo); color:var(--texto);}
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
+/* área principal */
 main{
-    width: 100%;
-    max-width: var(--max-width);
-    text-align: center;
-    background: rgba(0,0,0,0.08);
-    padding: 18px;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  width:100%;
+  max-width:var(--max-width);
+  text-align:center;
+  background:rgba(0,0,0,0.08);
+  padding:18px;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.4);
 }
 
-
+/* passos - padrão escondido */
 .passo{
-    display: none;
-    margin: 8px 0;
+  display:none;
+  margin:10px 0;
 }
 
+/* somente .ativo é mostrado */
 .passo.ativo{
-    display: block;
+  display:block;
 }
 
 /* imagens responsivas */
 .passo img{
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 8px auto;
-    border-radius: 6px;
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:10px auto;
+  border-radius:6px;
 }
 
-
+/* botões */
 button{
-    background-color: var(--botao);
-    color: var(--texto);
-    border: 2px solid rgba(0,0,0,0.15);
-    padding: 8px 12px;
-    margin: 6px 6px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.95rem;
+  background-color:var(--botao);
+  color:var(--texto);
+  border:2px solid rgba(0,0,0,0.15);
+  padding:8px 12px;
+  margin:6px 6px;
+  cursor:pointer;
+  border-radius:4px;
+  font-weight:600;
+  font-size:0.95rem;
 }
 
+button:focus{ outline:3px solid rgba(255,255,255,0.12); outline-offset:2px; }
 
-button:focus{
-    outline: 3px solid rgba(255,255,255,0.12);
-    outline-offset: 2px;
-}
-
-
-@media (max-width: 480px){
-    button{
-        padding: 10px 14px;
-        font-size: 0.95rem;
-    }
-    main{ padding: 14px; }
+@media (max-width:480px){
+  button{ padding:10px 14px; font-size:0.95rem; }
+  main{ padding:14px; }
 }

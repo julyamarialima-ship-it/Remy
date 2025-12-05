@@ -1,39 +1,49 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    const botoes = document.querySelectorAll('.btn-proximo');
+  // Inicialização robusta: remove .ativo de todos e ativa apenas passo-0
+  const passos = document.querySelectorAll('.passo');
+  passos.forEach(p => p.classList.remove('ativo'));
 
-   
-    if (!botoes || botoes.length === 0) return;
+  const inicial = document.getElementById('passo-0');
+  if (inicial) inicial.classList.add('ativo');
 
-    botoes.forEach(button => {
-        button.addEventListener('click', function (evt) {
-            evt.preventDefault();
+  // Seleciona todos os botões
+  const botoes = document.querySelectorAll('.btn-proximo');
+  if (!botoes || botoes.length === 0) {
+    console.info('Nenhum botão .btn-proximo encontrado.');
+    return;
+  }
 
-            const atual = document.querySelector('.passo.ativo');
-           
-            const target = String(this.getAttribute('data-proximo'));
-            const proximoId = 'passo-' + target;
+  botoes.forEach(button => {
+    button.addEventListener('click', function (evt) {
+      evt.preventDefault();
 
-           
-            const proximo = document.getElementById(proximoId);
+      // localiza passo atual
+      const atual = document.querySelector('.passo.ativo');
 
-            if (!proximo) {
+      // extrai valor de data-proximo: permite que exista texto sujo, extrai apenas dígitos
+      const raw = String(this.getAttribute('data-proximo') || '');
+      const digits = raw.match(/\d+/);
+      if (!digits) {
+        console.warn('data-proximo inválido no botão:', this, 'valor:', raw);
+        return;
+      }
+      const targetNum = digits[0];
+      const proximoId = 'passo-' + targetNum;
+      const proximo = document.getElementById(proximoId);
 
-                console.warn('Alvo não encontrado:', proximoId);
-                return;
-            }
+      if (!proximo) {
+        console.warn('Elemento alvo não encontrado:', proximoId);
+        return;
+      }
 
-            
-            if (atual) {
-                atual.classList.remove('ativo');
-            }
+      // remove .ativo de todos (garante não haver múltiplos ativos)
+      document.querySelectorAll('.passo.ativo').forEach(el => el.classList.remove('ativo'));
 
-            
-            proximo.classList.add('ativo');
+      // adiciona .ativo no próximo
+      proximo.classList.add('ativo');
 
-            
-            proximo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+      // rola suavemente para o próximo passo (melhora experiência)
+      proximo.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+  });
 });
