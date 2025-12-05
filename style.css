@@ -16,7 +16,6 @@ html,body{
     color: var(--texto);
 }
 
-/* centraliza o main tanto vertical quanto horizontalmente */
 body{
     display: flex;
     justify-content: center;
@@ -24,7 +23,6 @@ body{
     padding: 20px;
 }
 
-/* área principal */
 main{
     width: 100%;
     max-width: var(--max-width);
@@ -35,7 +33,7 @@ main{
     box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
-/* passos (somente o .ativo é mostrado) */
+
 .passo{
     display: none;
     margin: 8px 0;
@@ -54,7 +52,7 @@ main{
     border-radius: 6px;
 }
 
-/* botões */
+
 button{
     background-color: var(--botao);
     color: var(--texto);
@@ -67,13 +65,13 @@ button{
     font-size: 0.95rem;
 }
 
-/* efeito de foco (acessibilidade teclado) */
+
 button:focus{
     outline: 3px solid rgba(255,255,255,0.12);
     outline-offset: 2px;
 }
 
-/* melhora o contraste em telas menores */
+
 @media (max-width: 480px){
     button{
         padding: 10px 14px;
