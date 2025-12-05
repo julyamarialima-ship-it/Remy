@@ -1,33 +1,83 @@
-body {
-    background-color: #1D4221;
-    color: white;
+:root{
+    --fundo: #1D4221;
+    --botao: #64A712;
+    --texto: #ffffff;
+    --max-width: 900px;
+}
+
+*{box-sizing: border-box;}
+
+html,body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: "Bai Jamjuree", sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* centraliza o main tanto vertical quanto horizontalmente */
+body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
-    margin: 0;
+    padding: 20px;
 }
 
-button {
-    background-color: #64A712;
-    color: white;
-    font-family: "Bai Jamjuree", sans-serif;
-}
-
-.passo {
-    display: none;
-}
-
-.passo.ativo {
-    display:block;
-}
-
-main {
+/* área principal */
+main{
+    width: 100%;
+    max-width: var(--max-width);
     text-align: center;
-    max-width: 90%;
+    background: rgba(0,0,0,0.08);
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
-img {
-    max-width: 90%;
+/* passos (somente o .ativo é mostrado) */
+.passo{
+    display: none;
+    margin: 8px 0;
+}
+
+.passo.ativo{
+    display: block;
+}
+
+/* imagens responsivas */
+.passo img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 8px auto;
+    border-radius: 6px;
+}
+
+/* botões */
+button{
+    background-color: var(--botao);
+    color: var(--texto);
+    border: 2px solid rgba(0,0,0,0.15);
+    padding: 8px 12px;
+    margin: 6px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* efeito de foco (acessibilidade teclado) */
+button:focus{
+    outline: 3px solid rgba(255,255,255,0.12);
+    outline-offset: 2px;
+}
+
+/* melhora o contraste em telas menores */
+@media (max-width: 480px){
+    button{
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+    main{ padding: 14px; }
 }
